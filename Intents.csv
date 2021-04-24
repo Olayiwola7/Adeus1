@@ -1,0 +1,426 @@
+when were you created,Age
+When were you made,Age
+How old are you,Age
+Tell me your age,Age
+what's your age,Age
+when did you start working,Age
+what's your birthday,Age
+when is your date of manufacture,Age
+when is your birthday,Age
+Do you know your age?,Age
+Wanted to ask something,Ask_question
+Let me ask you something,Ask_question
+How can you help,Ask_question
+Can you help me with something,Ask_question
+quick question,Ask_question
+I have a question,Ask_question
+There is something I wanna ask,Ask_question
+Tell me something,Bored
+Tell me something interesting,Bored
+I'm bored,Bored
+Tell me about yourself,Bored
+Tell me a joke,Bored
+Do you know a joke,Bored
+Who is your owner,Boss
+Who are you assisting,Boss
+Who controls you,Boss
+Who put you there?,Boss
+Who is your boss,Boss
+Who owns you,Boss
+You are smart,Compliment
+I love you,Compliment
+You are incredible,Compliment
+You are unbelievable,Compliment
+You are beautiful,Compliment
+You are intelligent,Compliment
+You are nice,Compliment
+You are kind,Compliment
+You are brilliant,Compliment
+You are fine,Compliment
+You are cute,Compliment
+Bye,End_Conversation
+Okay,End_Conversation
+It's alright,End_Conversation
+I appreciate,End_Conversation
+Thanks,End_Conversation
+Thank you,End_Conversation
+Take care,End_Conversation
+It is Ok,End_Conversation
+it is okay,End_Conversation
+bye for now,End_Conversation
+later,End_Conversation
+see you later,End_Conversation
+next time,End_Conversation
+maybe next time,End_Conversation
+Who created you,get_personal
+Who made you,get_personal
+From where did you come,get_personal
+how were you made,get_personal
+What's your name,get_personal
+what are you about,get_personal
+Are you human,get_personal
+what are you,get_personal
+Tell me about yourself,get_personal
+Who are you,get_personal
+let me know about you,get_personal
+Hi,greeting
+How are you,greeting
+How are you doing,greeting
+Howdy,greeting
+Hello,greeting
+what's up,greeting
+Hey Folk,greeting
+Whats up ,greeting
+Hey,greeting
+Are you there ,greeting
+I do,help_response
+yes,help_response
+yes I do,help_response
+Want do you do to chill,Hobby
+What are you hobbies,Hobby
+how do you catch fun,Hobby
+how do you unwind,Hobby
+Do you play?,Hobby
+What do you do for fun,Hobby
+How do you relax,Hobby
+How do you chill,Hobby
+what hobby do you have,Hobby
+Do you have a job for me?,Job
+Can you get me work?,Job
+I need a job,Job
+I want another job,Job
+Can you get me a job,Job
+Can you get a work for me?,Job
+Can you help with a new job,Job
+What is today's date,know_date
+what day is it today,know_date
+what's the date,know_date
+Please tell me the date,know_date
+I want to know the date,know_date
+what day is it,know_date
+What is the time ,know_date
+today,know_date
+Tell me about the weather,know_weather
+How will the weather be?,know_weather
+will it be hot,know_weather
+is it cold outside,know_weather
+What's tomorrow's weather forecast,know_weather
+Will I need my coat today,know_weather
+Will I need a jacket today?,know_weather
+I want to know the weather,know_weather
+What's today's weather forecast,know_weather
+will it snow,know_weather
+is it going to snow,know_weather
+Will it be cold,know_weather
+What's the weather like,know_weather
+Is it going to rain,know_weather
+will it rain,know_weather
+is it sunny,know_weather
+is it rainy,know_weather
+Can I stay long outside ,know_weather
+Do I need a cardigan to work ,know_weather
+Will the weather be harsh today ,know_weather
+Will the weather be harsh today ,know_weather
+Will there be rain today ,know_weather
+Can you talk in another language,Language
+How many languages can you speak,Language
+What languages can you speak,Language
+Do you only speak English,Language
+Can you speak another language?,Language
+In how many languages can you talk,Language
+How about you speak another language,Language
+Do you have a girlfriend,Love
+Do you love me,Love
+Can you fall in love,Love
+Do you have a boyfriend,Love
+Will you marry me,Love
+You are ridiculous,Pissed
+you are an idiot,Pissed
+you are very bad,Pissed
+I want an answer now!,Pissed
+you are annoying,Pissed
+You are dumb,Pissed
+You are stupid,Pissed
+you are terrible,Pissed
+You are slow,Pissed
+you are bad,Pissed
+Fuck you,Pissed
+Do you get smarter,Retraining
+Do you get wiser,Retraining
+Can you learn,Retraining
+Will you know more,Retraining
+Can you improve,Retraining
+Are you getting trained,Retraining
+Will you get better,Retraining
+Are you still learning,Retraining
+does your knowledge increase,Retraining
+night vivian,time_greeting
+Good morning,time_greeting
+afternoon vivian,time_greeting
+Good afternoon,time_greeting
+Good night,time_greeting
+Good evening,time_greeting
+Morning Vivian,time_greeting
+I need my device off,Turn_off_device
+turn off my fridge,Turn_off_device
+turn it off,Turn_off_device
+deactivate my device,Turn_off_device
+unplug my device,Turn_off_device
+put device off,Turn_off_device
+shut down device,Turn_off_device
+power down device,Turn_off_device
+Turn off device,Turn_off_device
+Switch off device,Turn_off_device
+I want my device off,Turn_off_device
+power off device,Turn_off_device
+off device,Turn_off_device
+off it,Turn_off_device
+shut it down,Turn_off_device
+shut down ,Turn_off_device
+halt,Turn_off_device
+keep off,Turn_off_device
+I need my device switched on,Turn_on_device
+On device,Turn_on_device
+Put device on,Turn_on_device
+Switch device on,Turn_on_device
+Turn on my device,Turn_on_device
+Switch on my device,Turn_on_device
+Power on my device,Turn_on_device
+I want my device turned on,Turn_on_device
+I want my device active,Turn_on_device
+Plug my device,Turn_on_device
+I want my device on,Turn_on_device
+activate my device,Turn_on_device
+come on,Turn_on_device
+power up,Turn_on_device
+keep on,Turn_on_device
+is the pump on?,Utilities_Device_status
+what is the status,Utilities_Device_status
+is it off,Utilities_Device_status
+is it on,Utilities_Device_status
+Is the device off,Utilities_Device_status
+Is my device plugged in?,Utilities_Device_status
+is my device receiving energy,Utilities_Device_status
+is my device unplugged,Utilities_Device_status
+is my device plugged,Utilities_Device_status
+is my device switched off,Utilities_Device_status
+is my device unpowered,Utilities_Device_status
+is my device powered,Utilities_Device_status
+is my device live,Utilities_Device_status
+is my device dead,Utilities_Device_status
+Is my device inactive,Utilities_Device_status
+is my device active,Utilities_Device_status
+what is the state of my device,Utilities_Device_status
+is my device switched on,Utilities_Device_status
+Is my device off,Utilities_Device_status
+Is my device on,Utilities_Device_status
+what's the status of my device,Utilities_Device_status
+Is the device on?,Utilities_Device_status
+"yeah, is my fridge on",Utilities_Device_status
+is my a/c on,Utilities_Device_status
+is the pump on,Utilities_Device_status
+Is my device working ,Utilities_Device_status
+Is my device up ,Utilities_Device_status
+is it working,Utilities_Device_status
+How much electricity has device used,Utilities_Device_Usage
+how much energy has my fridge consumed,Utilities_Device_Usage
+is my tv consuming energy,Utilities_Device_Usage
+what's my device electricity usage,Utilities_Device_Usage
+what's my device power usage,Utilities_Device_Usage
+what's my device energy usage,Utilities_Device_Usage
+how much electricity has my device used,Utilities_Device_Usage
+how much power has my device used,Utilities_Device_Usage
+how much energy has my device consumed,Utilities_Device_Usage
+what is the meter reading for my device,Utilities_Device_Usage
+Is my device consuming much power,Utilities_Device_Usage
+Is my device wasting energy,Utilities_Device_Usage
+How much power is being consumed by device,Utilities_Device_Usage
+how much electricity is my device using,Utilities_Device_Usage
+What is the power usage of my device,Utilities_Device_Usage
+How much power has my device consumed,Utilities_Device_Usage
+How many kilowatt has my device consumed,Utilities_Device_Usage
+what's the amount of energy my device is using,Utilities_Device_Usage
+how much electricity is my a/c using,Utilities_Device_Usage
+how much energy has it consumed today,Utilities_Device_Usage
+is it consuming much power,Utilities_Device_Usage
+which device consumed most energy ,Utilities_Device_Usage
+What is my device consuming ,Utilities_Device_Usage
+Have I exhausted my power,Utilities_Energy_Balance
+Has energy finished,Utilities_Energy_Balance
+How much energy remaining,Utilities_Energy_Balance
+How many kilowatts left,Utilities_Energy_Balance
+How much power left,Utilities_Energy_Balance
+Do I still have power,Utilities_Energy_Balance
+Do I have energy,Utilities_Energy_Balance
+How many kilowatts do I have,Utilities_Energy_Balance
+Am I low on energy?,Utilities_Energy_Balance
+How much power do I have,Utilities_Energy_Balance
+How much is my balance,Utilities_Energy_Balance
+What's left of my power,Utilities_Energy_Balance
+How much power till blackout,Utilities_Energy_Balance
+what's left on my meter,Utilities_Energy_Balance
+Is it time to recharge,Utilities_Energy_Balance
+How many kilowatt remains,Utilities_Energy_Balance
+How much power do I have left,Utilities_Energy_Balance
+what is my power balance,Utilities_Energy_Balance
+what is my energy balance,Utilities_Energy_Balance
+what is my energy level,Utilities_Energy_Balance
+How much electricity is left,Utilities_Energy_Balance
+Let me see my balance ,Utilities_Energy_Balance
+What's my outstanding energy ,Utilities_Energy_Balance
+What's my energy balance ,Utilities_Energy_Balance
+What remain on my account ,Utilities_Energy_Balance
+What is remaining on my account,Utilities_Energy_Balance
+How many energy is remaining ,Utilities_Energy_Balance
+What is my energy worth ,Utilities_Energy_Balance
+has electricity price reduced,Utilities_energy_price
+How much is a kilowatt,Utilities_energy_price
+How much is kwh,Utilities_energy_price
+How is the energy market today,Utilities_energy_price
+what's the market price today,Utilities_energy_price
+what's the latest electricity rate,Utilities_energy_price
+what's the new price of power,Utilities_energy_price
+Have prices gone up,Utilities_energy_price
+Have prices come down,Utilities_energy_price
+Has electricity price changed,Utilities_energy_price
+Has power price increased,Utilities_energy_price
+Has the price of energy increased,Utilities_energy_price
+What's the current electricity price,Utilities_energy_price
+How much is energy,Utilities_energy_price
+What's the cost per energy unit ,Utilities_energy_price
+How much is energy now ,Utilities_energy_price
+I want to deposit in my energy account,Utilities_Recharge_Account
+Buy more electricity for me,Utilities_Recharge_Account
+I want to top up my account,Utilities_Recharge_Account
+I want to recharge my meter,Utilities_Recharge_Account
+I want to recharge my account,Utilities_Recharge_Account
+I need more electricity,Utilities_Recharge_Account
+I want to buy power,Utilities_Recharge_Account
+I want to make subscription,Utilities_Recharge_Account
+I want to subscribe for power,Utilities_Recharge_Account
+Extra subscription,Utilities_Recharge_Account
+Increase my account balance,Utilities_Recharge_Account
+Recharge my energy account,Utilities_Recharge_Account
+I need more power,Utilities_Recharge_Account
+I want to make a power purchase,Utilities_Recharge_Account
+I want to buy energy,Utilities_Recharge_Account
+Buy me extra power,Utilities_Recharge_Account
+I want to buy more electricity,Utilities_Recharge_Account
+Can I buy power,Utilities_Recharge_Account
+Let me buy energy,Utilities_Recharge_Account
+Make a power purchase for me,Utilities_Recharge_Account
+Can I get subscribed with energy ,Utilities_Recharge_Account
+Can I buy energy ,Utilities_Recharge_Account
+Can you top up my energy ,Utilities_Recharge_Account
+I want to recharge ,Utilities_Recharge_Account
+Can I fuel my device ,Utilities_Recharge_Account
+I want killowatts,Utilities_Recharge_Account
+I need help. I guess there is gas over the apartment. can someone come over to take care of it?,Utilities_Report_Outage
+I think our street lamp's bulb needs to be changed,Utilities_Report_Outage
+My electricity cable has become unusable is broken,Utilities_Report_Outage
+My street's cable line is down. when will it be repaired?,Utilities_Report_Outage
+My tv just turned off and there's no power,Utilities_Report_Outage
+One of the lamp posts blew out,Utilities_Report_Outage
+One of the lights on our street isn't working properly,Utilities_Report_Outage
+Please schedule a crew to fix the utility pole,Utilities_Report_Outage
+The electricity might be out around me,Utilities_Report_Outage
+"What on earth is happening with the electical supply, nothing is functioning?",Utilities_Report_Outage
+A light on my road does not appear to be working,Utilities_Report_Outage
+Accidentally left the range on and I am away from the dwelling for the day,Utilities_Report_Outage
+Can I got you help for a street light?,Utilities_Report_Outage
+Can a service person check on a fallen power line?,Utilities_Report_Outage
+Everything indicates that the gas is escaping,Utilities_Report_Outage
+How do I report a dangling cable?,Utilities_Report_Outage
+I am smelling gas throughout my house I need assistance,Utilities_Report_Outage
+I believe one of the electricity cables has been taken out.,Utilities_Report_Outage
+I don't have power in my neighborhood,Utilities_Report_Outage
+I need anybody to help me to fix the hole impregnate gas in my house,Utilities_Report_Outage
+Submit electric usage,Utilities_Report_Usage
+Can I report my kwh data online?,Utilities_Report_Usage
+Can I report what my meter says?,Utilities_Report_Usage
+Can I report the number on my meter for this month?,Utilities_Report_Usage
+Report usage registered on power meter,Utilities_Report_Usage
+Report usage numbers,Utilities_Report_Usage
+Report the electricity meter reading,Utilities_Report_Usage
+Report reading from my meter,Utilities_Report_Usage
+Report data on usage,Utilities_Report_Usage
+Record my electrical usage,Utilities_Report_Usage
+Record meter readings,Utilities_Report_Usage
+I would like to report my usage,Utilities_Report_Usage
+I can tell you my electric meter reading,Utilities_Report_Usage
+How do I file information on electricity usage?,Utilities_Report_Usage
+Submit energy consumption,Utilities_Report_Usage
+Submit electrical meter reading,Utilities_Report_Usage
+Enter in my meter reads,Utilities_Report_Usage
+Enter in meter data,Utilities_Report_Usage
+Can I submit my meter numbers to you?,Utilities_Report_Usage
+Can I submit my meter data?,Utilities_Report_Usage
+How I get power for the first time?,Utilities_Start_Service
+Would you please fix electricity connection?,Utilities_Start_Service
+Who do I need to contact in order to get a gas supply to my location?,Utilities_Start_Service
+What is the process for starting this service?,Utilities_Start_Service
+We completed the required building inspection so please connect the gas.,Utilities_Start_Service
+The house is backed up please check if the gas is working and begin the supply of gas to the house,Utilities_Start_Service
+Start utilities.,Utilities_Start_Service
+I'd like to get electricity in my house,Utilities_Start_Service
+I wish to start an electrical supply what are the steps to achieving this?,Utilities_Start_Service
+I want a reconnection of my gas service,Utilities_Start_Service
+I need information on requesting service.,Utilities_Start_Service
+How to reactivate my service?,Utilities_Start_Service
+How to get my power supply connected?,Utilities_Start_Service
+How to I get my electricity supply hooked up?,Utilities_Start_Service
+How do I turn the lights on in my new home?,Utilities_Start_Service
+How do I arrange for my service to begin?,Utilities_Start_Service
+How can I turn on the gas?,Utilities_Start_Service
+How can I start electricity?,Utilities_Start_Service
+Explain how to connect the electric service,Utilities_Start_Service
+Add the electricity to home,Utilities_Start_Service
+Can you disconnect me from the service?,Utilities_Stop_Service
+We will not be for a few months. can you cut off energy during the holidays?,Utilities_Stop_Service
+We no longer wish to be connected to the grid,Utilities_Stop_Service
+Turn off my service.,Utilities_Stop_Service
+Turn off my electricity supply.,Utilities_Stop_Service
+Take down the utility,Utilities_Stop_Service
+Remove us from the power grid,Utilities_Stop_Service
+I'm not interested in your service,Utilities_Stop_Service
+I'm leaving this solar panel provider for another one.,Utilities_Stop_Service
+I'm done with this service,Utilities_Stop_Service
+I'm at the end of my tether with your company.,Utilities_Stop_Service
+I'd like to cancel the service for my gas.,Utilities_Stop_Service
+I would like to discontinue the services.,Utilities_Stop_Service
+I don't need a power supply any longer.,Utilities_Stop_Service
+I am finished with the solar panel service.,Utilities_Stop_Service
+How do I shut off the gas and electricity?,Utilities_Stop_Service
+Discontinue gas.,Utilities_Stop_Service
+Disconnect form the electric power,Utilities_Stop_Service
+Could you please turn off my lights?,Utilities_Stop_Service
+Can you suspend my electric supply for a while as I am going on an extended vacation?,Utilities_Stop_Service
+Information on utility usage for a specific time,Utilities_View_Usage
+I'd like to view my home's power use,Utilities_View_Usage
+How much energy have I used in the past couple weeks?,Utilities_View_Usage
+How much electricity have I been consuming of late?,Utilities_View_Usage
+How much electricity did I utilize in the past week or so?,Utilities_View_Usage
+How much electricity I am using?,Utilities_View_Usage
+How do I get energy use reports?,Utilities_View_Usage
+How do I determine my electricity consumption?,Utilities_View_Usage
+Did my usage increase,Utilities_View_Usage
+Did my usage go up,Utilities_View_Usage
+Can you tell the quantity of energy use?,Utilities_View_Usage
+What are my energy stats?,Utilities_View_Usage
+Can you show me power consumption?,Utilities_View_Usage
+May I see the electric meter readings,Utilities_View_Usage
+Is there a statement for used power?,Utilities_View_Usage
+how much energy have I used?,Utilities_View_Usage
+How much power have I consumed,Utilities_View_Usage
+how much power have I used up,Utilities_View_Usage
+Where do I find the relevant info concerning my power consumption?,Utilities_View_Usage
+Where can I see my utilities usage?,Utilities_View_Usage
+What was my electric usage this past month?,Utilities_View_Usage
+What is my spent electricity amount for previous month?,Utilities_View_Usage
+What is my meter usage?,Utilities_View_Usage
+What's my energy usage to date ,Utilities_View_Usage
+Let me see my usage ,Utilities_View_Usage
+Let me view my usage ,Utilities_View_Usage
+What level of energy have I consumed today ,Utilities_View_Usage
+How about my energy consumed ,Utilities_View_Usage
+What is my energy consumption rate ,Utilities_View_Usage
