@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import argparse 
 import os
 import queue
@@ -15,8 +13,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import re
-import wordtodigits
 import simpleaudio as sa
+from datetime import date
+import time
+
 
 
 
@@ -25,28 +25,29 @@ df = pd.read_csv('Intents.csv', header = None, names = ['Examples', 'Intent'])
 device = []
 appliances= ['fridge', 'tv', 'television', 'a/c','air conditioner','pump','waterpump',
               'bulb','water pump','heater','microwave','cooker','kettle','electric kettle','light','speaker','refridgerator']
-currencies = ['dollars', 'pounds', 'euros', 'naira', 'yuan']
-time = []
+currencies = ['dollars', 'pounds', 'euros', 'naira', 'yuan', 'canadian dollars', 'canadian dollar', 'australian dollars', 'australian dollar',
+              'dollar','pound' , 'euro']
+times = ['today', 'yesterday', 'last week', 'last month', 'a month ago', 'two days ago', 'two months ago', 'three days ago', 'one month', 'one day']
 quantity = []
 currency = []
-
-def speakword(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+period= []
+today = date.today()
 
 def get_intent(text):
-  global device, quantity, currency
+  global device, quantity, currency, period
   quantity = []
   currency = []
   examples_list = df['Examples'].tolist()
   quantity = list (map(int, re.findall(r'\d+', text)))
-  check = any(appliance in text.lower() for appliance in appliances)
+  device_check = any(appliance in text.lower() for appliance in appliances)
   currency_check  = any(currency in text.lower() for currency in currencies)
+  period_check = any(time in text.lower() for time in times)
+  if period_check:
+    period = list(set(times).intersection(set(text.split())))
   if currency_check:
     currency =list(set(currencies).intersection(set(text.split())))
   if not 'device' in text.lower():
-    if check:
+    if device_check:
       device =list(set(appliances).intersection(set(text.split())))
       for d in device:
         text = text.replace(d, 'device')
@@ -59,35 +60,56 @@ def get_intent(text):
   vectors = cv.fit_transform(examples_list+text).toarray()
   vectors_list = [vec for vec in vectors]
   similarity_scores = cosine_similarity(vectors_list)[-1][:-1]
-  #print(similarity_scores)
-  #print(similarity_scores)
   i=np.argmax(similarity_scores)
   intent = df[df['Examples'] == examples_list[i]]['Intent'].values[0].strip()
-  print(intent)
   return intent
 
 def intent2action(intent):
   text = ''
   global device, quantity, currency
   if intent == 'Utilities_Device_status':
+     
     if device:
+        
       for d in device:
-        status = 'on' #get status from db
-        text += f'Your {d} status is {status}...'
+        
+        
+        address= fr"http://local host/nlp/?key=passkey&device={d}&get_state=1)"
+        address = address.replace(' ', '%20')
+        web_res  = requests.get(address).json() 
+        response =  web_res['response']
+        if web_res['status']==0:
+            text+= f'{response}'
+        else:#get status from db
+            text += f'Your {d} status is {response}...'
     else:
       text += 'Which device do you want to know its status?'
 
   elif intent == 'Utilities_Device_Usage':
-    if device:
+
+    if device and period:
       for d in device:
-        usage = 5 # get usage from db
-        text += f'Your {d} usage is {usage} kilowatts...'
+        address = fr"http://local host/nlp/?key=passkey&device={d}&get_energy=1&period={period}"
+        address = address.replace(' ', '%20')
+        
+        web_res = requests.get(address)
+        usage = json.loads(web_res) 
+        text += f'Your {d} usage for {period} is {usage} kilowatts...'
+    elif device:
+      address = fr"http://local host/nlp/?key=passkey&device={d}&get_energy=1&period=today"
+      address = address.replace(' ', '%20')
+      web_res = requests.get(address)
+      usage = json.loads(web_res)
+      text += f'Your device usage for today is {usage}'
     else:
-      text += 'Which device do you want to know its usage?'
+        text+= f'Which device do you want to know its status'
 
   elif intent == 'Turn_off_device':
     if device:
       for d in device:
+        address = fr"http://local host/nlp/?key=passkey&device={d}&turn_off=1"
+        address = address.replace(' ', '%20')
+        web_res = requests.post(address)
         text += f'Switching off your {d}...'
     else:
       text += 'Which device do you want to switch off?'
@@ -95,16 +117,25 @@ def intent2action(intent):
   elif intent == 'Turn_on_device':
     if device:
       for d in device:
+        address = fr"http://local host/nlp/?key=passkey&device={d}&turn_on=1"
+        address = address.replace(' ', '%20')
+        web_res= requests.post(address)
         text += f'Switching on your {d}...'
     else:
       text += 'Which device do you want to switch on?'
 
-  elif intent == 'Utilities_Energy_Balance':  
-      balance = '20'
+  elif intent == 'Utilities_Energy_Balance':
+      address = fr"http://local host/nlp/?key=passkey&get_balance=1"
+      address = address.replace(' ', '%20')
+      web_res = requests.get(address)
+      balance = json.loads(web_res)
       text += f'Your energy balance is {balance} kilowatts....'
 
   elif intent == 'Utilities_energy_price':
-      price = 20 #getting price from db
+      address = fr"http://local host/nlp/?key=passkey&get_price=1"
+      address = address.replace(' ', '%20')
+      web_res= requests.get(address)
+      price = json.loads(web_res) 
       if quantity and currency:
         text+= f'You can get {quantity[0]/price} killowatts for {quantity[0]} {currency[0]}'
       elif quantity:
@@ -120,6 +151,20 @@ def intent2action(intent):
       text += f'Your account has just be credited with {quantity[0]} kilowatts'
     else:
       text += 'How many kilowatts do you want to buy?'
+
+  elif intent == 'Utilities_View_Usage':
+    if period:
+      address = fr"http://local host/nlp/?key=passkey&get_energy=1&period={period}"
+      address = address = address.replace(' ', '%20')
+      web_res = requests.get(address)
+      usage = json.loads(web_res)
+      text += f'Your usage for {period[0]} is {usage}'
+    else:
+      address = fr"http://local host/nlp/?key=passkey&get_energy=1&period=today"
+      address = address = address.replace(' ', '%20')
+      web_res = requests.get(address)
+      usage = json.loads(web_res)
+      text += f"Your usage for today is {usage}"
 
   elif intent == 'Age':
     text+= f'I cannot really tell because I am updated often. You can wish me a happy birthday whenever you want'
@@ -162,7 +207,9 @@ def intent2action(intent):
     text+= f"The weather today is..." #get from db
 
   elif intent == 'know_date':
-    text+= f"The date today is..."   #get from system time
+    d2 = today.strftime("%B %d, %Y")
+    
+    text+= f"The date today is {d2}" 
 
   elif intent == 'End_conversation':
     text+= f"I am happy I was able to help"
@@ -183,13 +230,19 @@ def intent2action(intent):
       text+= f"Our team will respond to your request as soon as possible"
       
   else:
-      text+= f"Can you reword your statement? I'm not understanding"
-      
+      text+= f"Can you reword your statement? I don't understand"
     
-    
-
   return text
+      
 
+
+
+def speakword(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+    
+    
 q = queue.Queue()
 
 def int_or_str(text):
@@ -204,7 +257,8 @@ def callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(bytes(indata))
-
+    
+    
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
     '-l', '--list-devices', action='store_true',
@@ -249,7 +303,7 @@ try:
     else:
         dump_fn = None
 
-    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 16000, device=args.device, dtype='int16',
+    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
             print('#' * 80)
             print('Press Ctrl+C to stop the recording')
@@ -257,42 +311,113 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
-                
                 data = q.get()
                 if rec.AcceptWaveform(data):
-                    #print(rec.Result())
-                    jres = json.loads(rec.Result())
-                    #finaltext = wordtodigits.convert(jres["text"])
-                    #finaltalk= intent2action(get_intent(finaltext))
-                    #speakword(finaltalk)
+                    jres = json.loads((rec.Result()))
+                    
                     if jres["text"]== str("hello james"):
                         filename = 'bbm_tone.wav'
                         wave_obj = sa.WaveObject.from_wave_file(filename)
                         play_obj = wave_obj.play()
                         play_obj.wait_done()
+                        q.queue.clear()
+                        
+                        
                         
                         while True:
-                            data = q.get()
-                            rec.AcceptWaveform(data)
-                            jres = json.loads(rec.Result())
-                            finaltext = wordtodigits.convert(jres["text"])
-                            finaltalk= intent2action(get_intent(finaltext))
-                            speakword(finaltalk)
+                            
+                            data= q.get()
+                            if rec.AcceptWaveform(data):
+                                jres = json.loads((rec.Result()))
+                            
                         
-                        
-                        
-                        
-                else:
-                    #print(rec.PartialResult())
-                    jres = json.loads(rec.PartialResult())
-                    if jres["partial"]== str("hello james"):
-                       #engine = pyttsx3.init()
-                       #engine.say("Welcome, I'm vivian, how can I help")
-                       #engine.runAndWait()
-                       print(jres)
-                if dump_fn is not None:
-                    dump_fn.write(data)
-
+                                finaltext= wordtodigits.convert((jres["text"]))
+                                user_intent = get_intent(finaltext)
+                                adeus_reply = intent2action(user_intent)
+                                print(adeus_reply)
+                                
+                                if adeus_reply.startswith('Which device do you'):
+                                    
+                                    speakword(adeus_reply)
+                                    q.queue.clear()
+                                    time.sleep(2)
+                                    while True: 
+                                        data = q.get()
+                                        if rec.AcceptWaveform(data):
+                                            jres = json.loads(rec.Result())
+                                            finaltext = wordtodigits.convert(jres["text"])
+                                            print(jres["text"])
+                                            device_check = any(appliance in finaltext.lower() for appliance in appliances)
+                                            if device_check:
+                                                device =list(set(appliances).intersection(set(finaltext.split())))
+                                                print(device)
+                                                adeus_reply= intent2action(user_intent)
+                                                speakword(adeus_reply)
+                                                q.queue.clear()
+                                                break
+                                            
+                                        
+                                            else:
+                                                speakword("please respond with a device name")
+                                                q.queue.clear()
+                                            
+                                    
+                                        
+                                        
+                                elif adeus_reply.startswith('How many kilowatts'):
+                                    speakword(adeus_reply)
+                                    q.queue.clear()
+                                    time.sleep(2)
+                                    while True:
+                                        data = q.get()
+                                        if rec.AcceptWaveform(data):
+                                            jres = json.loads(rec.Result())
+                                            print(jres["text"])
+                                            finaltext = wordtodigits.convert(jres["text"])
+                                            quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                            currency_check  = any(currency in finaltext.lower() for currency in currencies)
+                                            if currency_check and quantity:
+                                                currency = list(set(currencies).intersection(set(finaltext.split())))
+                                                adeus_reply = intent2action(user_intent)
+                                                speakword(adeus_reply)
+                                                q.queue.clear()
+                                                break
+                                            elif quantity:
+                                                adeus_reply = intent2action(user_intent)
+                                                print(user_intent)
+                                                speakword(adeus_reply)
+                                                q.queue.clear()
+                                                break
+                                            else:
+                                                speakword("please respond with how much energy you need")
+                                                q.queue.clear()
+                                                
+                                elif adeus_reply.startswith('For which period'):
+                                    speakword(adeus_reply)
+                                    q.queue.clear()
+                                    while True:          
+                                        data = q.get()
+                                        rec.AcceptWaveform(data)
+                                        jres = json.loads(rec.Result())
+                                        finaltext = wordtodigits.convert(jres["text"])
+                                        quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                        period_check  = any(time in finaltext.lower() for time in times)
+                                        if period_check:
+                                            period = list(set(times).intersection(set(finaltext.split())))
+                                            adeus_reply = intent2action(user_intent)
+                                            speakword(adeus_reply)
+                                            q.queue.clear()
+                                            break
+                                        else:
+                                            speakword("please respond with the period you want ")
+                                                        
+                                                        
+                                else:
+                                    speakword(adeus_reply)
+                                    q.queue.clear()
+                                                            
+                                                            
+                                                            
 except KeyboardInterrupt:
     print('\nDone')
     parser.exit(0)
