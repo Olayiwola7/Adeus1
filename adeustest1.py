@@ -315,7 +315,7 @@ try:
                 if rec.AcceptWaveform(data):
                     jres = json.loads((rec.Result()))
                     
-                    if jres["text"]== str("hello james"):
+                    if jres["text"]== str("hello vivian"):
                         filename = 'bbm_tone.wav'
                         wave_obj = sa.WaveObject.from_wave_file(filename)
                         play_obj = wave_obj.play()
