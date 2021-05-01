@@ -23,7 +23,7 @@ import time
 
 df = pd.read_csv('Intents.csv', header = None, names = ['Examples', 'Intent'])
 device = []
-appliances= ['fridge', 'tv', 'television', 'a/c','air conditioner','pump','waterpump',
+appliances= ['fridge', 'tv', 'television', 'ac','air conditioner','pump','waterpump',
               'bulb','water pump','heater','microwave','cooker','kettle','electric kettle','light','speaker','refridgerator']
 currencies = ['dollars', 'pounds', 'euros', 'naira', 'yuan', 'canadian dollars', 'canadian dollar', 'australian dollars', 'australian dollar',
               'dollar','pound' , 'euro']
