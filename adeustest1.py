@@ -74,7 +74,7 @@ def intent2action(intent):
       for d in device:
         
         
-        address= fr"http://192.168.43.67/nlp/?key=passkey&device={d}&get_state=1)"
+        address= fr"http://localhost/nlp/?key=passkey&device={d}&get_state=1)"
         address = address.replace(' ', '%20')
         web_res  = requests.get(address).json() 
         response =  web_res['response']
@@ -89,14 +89,14 @@ def intent2action(intent):
 
     if device and period:
       for d in device:
-        address = fr"http://192.168.43.67/nlp/?key=passkey&device={d}&get_energy=1&period={period}"
+        address = fr"http://localhost/nlp/?key=passkey&device={d}&get_energy=1&period={period}"
         address = address.replace(' ', '%20')
         
         web_res = requests.get(address).json()
         usage = web_res['response'] 
         text += f'Your {d} usage for {period} is {usage} kilowatts...'
     elif device:
-      address = fr"http://192.168.43.67/nlp/?key=passkey&device={d}&get_energy=1&period=today"
+      address = fr"http://localhost/nlp/?key=passkey&device={d}&get_energy=1&period=today"
       address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
@@ -107,7 +107,7 @@ def intent2action(intent):
   elif intent == 'Turn_off_device':
     if device:
       for d in device:
-        address = fr"http://192.168.43.67/nlp/?key=passkey&device={d}&turn_off=1"
+        address = fr"http://localhost/nlp/?key=passkey&device={d}&turn_off=1"
         address = address.replace(' ', '%20')
         web_res = requests.post(address).json()
         text += f'Switching off your {d}...'
@@ -117,7 +117,7 @@ def intent2action(intent):
   elif intent == 'Turn_on_device':
     if device:
       for d in device:
-        address = fr"http://192.168.43.67/nlp/?key=passkey&device={d}&turn_on=1"
+        address = fr"http://localhost/nlp/?key=passkey&device={d}&turn_on=1"
         address = address.replace(' ', '%20')
         web_res= requests.post(address).json()
         text += f'Switching on your {d}...'
@@ -125,14 +125,14 @@ def intent2action(intent):
       text += 'Which device do you want to switch on?'
 
   elif intent == 'Utilities_Energy_Balance':
-      address = fr"http://192.168.43.67/nlp/?key=passkey&get_balance=1"
+      address = fr"http://localhost/nlp/?key=passkey&get_balance=1"
       address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       balance = web_res['response']
       text += f'Your energy balance is {balance} kilowatts....'
 
   elif intent == 'Utilities_energy_price':
-      address = fr"http://192.168.43.67/nlp/?key=passkey&get_price=1"
+      address = fr"http://localhost/nlp/?key=passkey&get_price=1"
       address = address.replace(' ', '%20')
       web_res= requests.get(address).json()
       price = web_res['response'] 
@@ -154,13 +154,13 @@ def intent2action(intent):
 
   elif intent == 'Utilities_View_Usage':
     if period:
-      address = fr"http://192.168.43.67/nlp/?key=passkey&get_energy=1&period={period}"
+      address = fr"http://localhost/nlp/?key=passkey&get_energy=1&period={period}"
       address = address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
       text += f'Your usage for {period[0]} is {usage}'
     else:
-      address = fr"http://192.168.43.67/nlp/?key=passkey&get_energy=1&period=today"
+      address = fr"http://localhost/nlp/?key=passkey&get_energy=1&period=today"
       address = address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
