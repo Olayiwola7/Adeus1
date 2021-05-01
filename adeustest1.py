@@ -74,7 +74,7 @@ def intent2action(intent):
       for d in device:
         
         
-        address= fr"http://localhost/nlp/?key=passkey&device={d}&get_state=1)"
+        address= fr"http://localhost/nlp/?key=passkey&device={d}&get_state=1"
         address = address.replace(' ', '%20')
         web_res  = requests.get(address).json() 
         response =  web_res['response']
